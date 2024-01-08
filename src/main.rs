@@ -3,10 +3,9 @@ fn main() {
 }
 
 fn solve_captcha(input: Vec<i32>) -> i32 {
-    if *input.last().unwrap() == 2 {
-        return 1;
-    }
-    input.len() as i32
+    circular_windowing(input).iter()
+        .map(|(left, right)| evaluate_pair(*left, *right))
+        .sum()
 }
 
 fn evaluate_pair(left: i32, right: i32) -> i32 {
@@ -17,10 +16,26 @@ fn evaluate_pair(left: i32, right: i32) -> i32 {
     }
 }
 
+fn circular_windowing(input: Vec<i32>) -> Vec<(i32, i32)> {
+    if input.len() == 0 {
+        return vec![];
+    }
+    let mut circular_input = input.clone();
+    circular_input.push(*input.first().unwrap());
+    return window_vector(circular_input)
+}
+
+fn window_vector(vector: Vec<i32>) -> Vec<(i32, i32)> {
+    let mut result = vec![];
+    for i in 0..vector.len()-1{
+        result.push((vector[i], vector[i+1]));
+    }
+    result
+}
 
 #[cfg(test)]
 mod captcha_test {
-    use crate::{evaluate_pair, solve_captcha};
+    use crate::*;
 
     #[test]
     fn test_evaluate_pair() {
@@ -38,23 +53,6 @@ mod captcha_test {
         assert_eq!(circular_windowing(vec![]), vec![]);
         assert_eq!(circular_windowing(vec![1, 1]), vec![(1, 1), (1, 1)]);
         assert_eq!(circular_windowing(vec![1, 2]), vec![(1, 2), (2, 1)]);
-    }
-
-    fn circular_windowing(input: Vec<i32>) -> Vec<(i32, i32)> {
-        if input.len() == 0 {
-            return vec![];
-        }
-        let mut circular_input = input.clone();
-        circular_input.push(*input.first().unwrap());
-        return window_vector(circular_input)
-    }
-
-    fn window_vector(vector: Vec<i32>) -> Vec<(i32, i32)> {
-        let mut result = vec![];
-        for i in 0..vector.len()-1{
-            result.push((vector[i], vector[i+1]));
-        }
-        result
     }
 
     #[test]
