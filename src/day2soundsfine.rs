@@ -41,9 +41,10 @@ mod checksum_corruption_test {
     #[test]
     fn test_full_checksum() {
         let lines = read_lines(&read_input_file("day2.txt"));
-        lines.iter().map(|line| parse_line(line)).collect::<Vec<Vec<i32>>>();
-
-        assert_eq!(0,0)
+        let rows = lines.iter()
+            .map(|line| parse_line(line))
+            .collect::<Vec<Vec<i32>>>();
+        assert_eq!(51833,sum_rows_checksum(rows))
     }
 
     fn parse_lines(input: Vec<&str>) -> Vec<Vec<i32>> {
