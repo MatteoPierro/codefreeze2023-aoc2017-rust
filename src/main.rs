@@ -26,11 +26,9 @@ fn circular_windowing(input: Vec<i32>) -> Vec<(i32, i32)> {
 }
 
 fn window_vector(vector: Vec<i32>) -> Vec<(i32, i32)> {
-    let mut result = vec![];
-    for i in 0..vector.len()-1{
-        result.push((vector[i], vector[i+1]));
-    }
-    result
+    (0..vector.len()-1)
+        .map(|i| (vector[i], vector[i+1]))
+        .collect()
 }
 
 #[cfg(test)]
