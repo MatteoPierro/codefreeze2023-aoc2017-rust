@@ -3,7 +3,8 @@ fn main() {
 }
 
 fn solve_captcha(input: Vec<i32>) -> i32 {
-    circular_windowing(input).iter()
+    circular_windowing(input)
+        .iter()
         .map(|(left, right)| evaluate_pair(*left, *right))
         .sum()
 }
@@ -16,18 +17,18 @@ fn evaluate_pair(left: i32, right: i32) -> i32 {
     }
 }
 
-fn circular_windowing(input: Vec<i32>) -> Vec<(i32, i32)> {
+fn circular_windowing(mut input: Vec<i32>) -> Vec<(i32, i32)> {
     if input.len() == 0 {
-        return vec![];
+        vec![]
+    } else {
+        input.push(*input.first().unwrap());
+        window_vector(input)
     }
-    let mut circular_input = input.clone();
-    circular_input.push(*input.first().unwrap());
-    return window_vector(circular_input)
 }
 
 fn window_vector(vector: Vec<i32>) -> Vec<(i32, i32)> {
-    (0..vector.len()-1)
-        .map(|i| (vector[i], vector[i+1]))
+    (0..vector.len() - 1)
+        .map(|i| (vector[i], vector[i + 1]))
         .collect()
 }
 
