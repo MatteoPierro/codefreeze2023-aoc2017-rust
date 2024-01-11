@@ -60,18 +60,18 @@ mod checksum_corruption_test {
     }
 
     #[test]
-    fn test_checksum_divisible_numbers(){
+    fn test_checksum_divisible_numbers() {
         assert_eq!(9, checksum_divisible_numbers(vec![vec![5, 9, 2, 8], vec![9, 4, 7, 3], vec![3, 8, 6, 5]]))
     }
 
     #[test]
-    fn test_checksum_part2(){
+    fn test_checksum_part2() {
         assert_eq!(288, checksum_divisible_numbers(parse_rows()))
     }
 
     fn checksum_divisible_numbers(rows: Vec<Vec<i32>>) -> i32 {
         rows.iter().map(|row| divisible_pair(row))
-            .fold(0, |acc, pair| acc + pair.0/pair.1)
+            .fold(0, |acc, pair| acc + pair.0 / pair.1)
     }
 
     fn divisible_pair(row: &Vec<i32>) -> (i32, i32) {
