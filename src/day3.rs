@@ -23,16 +23,19 @@ mod spiral_memory {
             return 0;
         }
         if square == 10 {
-            return 3;
+            return (square % 2) + 1 + 2;
+        }
+        if square == 11 {
+            return (square % 2) + 1;
         }
         if square == 12 {
-            return 3;
+            return (square % 2) + 1 + 2;
         }
         if square == 13 {
-            return 4;
+            return (square % 2) + 1 + 2;
         }
         if square == 14 {
-            return 3;
+            return (square % 2) + 1 + 2;
         }
         (square % 2) + 1
     }
