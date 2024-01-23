@@ -1,5 +1,6 @@
 mod day2soundsfine;
 mod input_reader;
+mod day3;
 
 fn main() {
     println!("Hello, world!");
