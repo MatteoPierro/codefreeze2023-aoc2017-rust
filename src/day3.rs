@@ -19,34 +19,18 @@ mod spiral_memory {
         assert_eq!(2, spiral_memory_distance(15));
         assert_eq!(3, spiral_memory_distance(16));
         assert_eq!(4, spiral_memory_distance(17));
+        assert_eq!(2, spiral_memory_distance(19));
+        assert_eq!(2, spiral_memory_distance(23));
     }
 
     fn spiral_memory_distance(square: i32) -> i32 {
         if square == 1 {
             return 0;
         }
-        if square == 10 {
-            return (square % 2) + 1 + 2;
-        }
-        if square == 11 {
+        if square == 11 || square == 15 || square == 19 || square == 23 {
             return (square % 2) + 1;
         }
-        if square == 12 {
-            return (square % 2) + 1 + 2;
-        }
-        if square == 13 {
-            return (square % 2) + 1 + 2;
-        }
-        if square == 14 {
-            return (square % 2) + 1 + 2;
-        }
-        if square == 15 {
-            return (square % 2) + 1;
-        }
-        if square == 16 {
-            return (square % 2) + 1 + 2;
-        }
-        if square == 17 {
+        if square >= 10 {
             return (square % 2) + 1 + 2;
         }
         (square % 2) + 1
