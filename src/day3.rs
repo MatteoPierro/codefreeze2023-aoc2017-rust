@@ -13,9 +13,9 @@ mod spiral_memory {
     }
 
     fn spiral_memory_distance(square: i32) -> i32 {
-        if square != 1 {
-            return (square % 2) + 1;
+        if square == 1 {
+            return 0;
         }
-        0
+        (square % 2) + 1
     }
 }
