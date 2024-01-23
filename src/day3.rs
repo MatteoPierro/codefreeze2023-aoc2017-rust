@@ -9,10 +9,11 @@ mod spiral_memory {
         assert_eq!(2, spiral_memory_distance(5));
         assert_eq!(1, spiral_memory_distance(6));
         assert_eq!(2, spiral_memory_distance(7));
+        assert_eq!(1, spiral_memory_distance(8));
     }
 
     fn spiral_memory_distance(square: i32) -> i32 {
-        if square >= 2 && square <= 7 {
+        if square != 1 {
             return (square % 2) + 1;
         }
         0
