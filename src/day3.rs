@@ -39,6 +39,9 @@ mod spiral_memory {
         if square == 14 {
             return (square % 2) + 1 + 2;
         }
+        if square == 15 {
+            return (square % 2) + 1;
+        }
         if square == 16 {
             return (square % 2) + 1 + 2;
         }
