@@ -24,15 +24,11 @@ mod spiral_memory {
     }
 
     fn spiral_memory_distance(square: i32) -> i32 {
-        if square == 1 {
-            return 0;
+        match square {
+            1 => 0,
+            11 | 15 | 19 | 23 => (square % 2) + 1,
+            s if s >= 10 => (square % 2) + 1 + 2,
+            _ => (square % 2) + 1
         }
-        if square == 11 || square == 15 || square == 19 || square == 23 {
-            return (square % 2) + 1;
-        }
-        if square >= 10 {
-            return (square % 2) + 1 + 2;
-        }
-        (square % 2) + 1
     }
 }
